@@ -82,8 +82,8 @@ namespace DatabaseDevelopment.Controllers
                         }
                     }
 					
-					if (connection.State == ConnectionState.Open)
-						connection.Close();
+		    if (connection.State == ConnectionState.Open)
+			connection.Close();
                     return (columns, values);
                 }
                 catch (SqlException){

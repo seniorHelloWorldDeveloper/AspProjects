@@ -24,11 +24,11 @@
                     count++;
                     @if (count == 0){
                         <th scope="row">@item</th>
+                    }
+                    else{
+                        <td>@item</td>
+                    }
                 }
-                else{
-                    <td>@item</td>
-                }
-            }
             </tr>
         }
     </tbody>

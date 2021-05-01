@@ -63,6 +63,9 @@ namespace DatabaseDevelopment.Controllers
                     IEnumerable<string> columns = new List<string>();
                     IEnumerable<IEnumerable<string>> values = new List<List<string>>();
                     SqlCommand sqlCommand = new SqlCommand((isOwnQuery ? query : $"SELECT * FROM {tableName}"), connection);
+					if (!isOwnQuery)
+						connection.Open();
+					
                     using (SqlDataReader sqlDataReader = await sqlCommand.ExecuteReaderAsync()){
                         while (await sqlDataReader.ReadAsync()){
                             for (int i = 0; i < sqlDataReader.FieldCount; i++){
@@ -78,6 +81,9 @@ namespace DatabaseDevelopment.Controllers
                             values = values.Append(val);
                         }
                     }
+					
+					if (connection.State == ConnectionState.Open)
+						connection.Close();
                     return (columns, values);
                 }
                 catch (SqlException){

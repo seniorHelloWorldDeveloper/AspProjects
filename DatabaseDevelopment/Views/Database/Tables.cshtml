@@ -1,0 +1,55 @@
+﻿@using DatabaseDevelopment.Controllers
+@model TableInfo
+
+@if (Model.Tables is not null){
+    <h2>Таблицы</h2>
+}
+else{
+    <h2>@Model.TableName</h2>
+}
+
+@{
+    Layout = "../Shared/_LayoutDatabase.cshtml";
+}
+
+@if (Model.Tables is not null){
+    @foreach (string TableName in Model.Tables){
+        <a href="~/Database/Tables/@TableName">@TableName</a>
+        <br>
+    }
+    <br>
+    <br>
+    <a href="~/Database/Query">Выполнить запрос</a>
+    <br>
+    <a href="~/Database/Query/Select">Выполнить SELECT запрос</a>
+}
+else{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @foreach (var elem in Model.Columns){
+                    <th scope="col">@elem</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var elem in Model.Values)
+            {
+                int count = -1;
+                
+                <tr>
+                    @foreach (var item in elem){
+                        count++;
+                        @if (count == 0){
+                            <th scope="row">@item</th>
+                        }
+                        else{
+                            <td>@item</td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

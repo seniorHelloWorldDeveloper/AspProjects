@@ -1,0 +1,35 @@
+﻿@using DatabaseDevelopment.Controllers
+@model TableInfo
+
+<h2>Результат SELECT запроса.</h2>
+
+@{
+    Layout = "../Shared/_LayoutDatabase.cshtml";
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @foreach (var elem in Model.Columns){
+                <th scope="col">@elem</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var elem in Model.Values)
+        {
+            int count = -1;
+            <tr>
+                @foreach (var item in elem){
+                    count++;
+                    @if (count == 0){
+                        <th scope="row">@item</th>
+                }
+                else{
+                    <td>@item</td>
+                }
+            }
+            </tr>
+        }
+    </tbody>
+</table>

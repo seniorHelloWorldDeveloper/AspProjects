@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "../Shared/_LayoutDatabase.cshtml";
+}
+
+<h2>SELECT запрос</h2>
+
+<form style="margin-top: 50px;" method="POST">
+  <div class="form-group">
+    <label for="queryString">SQL Select запрос</label>
+    <br>
+    <br>
+    <input type="text" class="form-control" id="queryString" name="queryString" placeholder="Введите sql запрос">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Обработать</button>
+</form>

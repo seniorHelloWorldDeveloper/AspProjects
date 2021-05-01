@@ -1,0 +1,29 @@
+﻿<h2>Регистрация</h2>
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<form style="margin-top: 50px;" method="POST">
+  <div class="form-group">
+    <label for="login">Логин</label>
+    <br>
+    <br>
+    <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="password">Пароль</label>
+    <br>
+    <br>
+    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+  </div>
+  <div>
+      <label for="confimPassword"/>
+      <br>
+    <br>
+      <input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Повторите пароль">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Войти</button>
+</form>
